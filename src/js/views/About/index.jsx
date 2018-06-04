@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
-import { Tabs, Tab } from 'material-ui';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import SlideDrawer from '../../components/SlideDrawer';
-import Widget from '../../components/Wrapper/Widget'
+import PropTypes, { func } from 'prop-types';
+import { connect } from 'react-redux';
+import Chart from '../../components/Chart';
+import { initializeAbout } from '../../selectors';
+import { initAbout } from '../../actions';
 
-export default class About extends Component {
+class About extends Component {
+  static propTypes = {
+    config: PropTypes.instanceOf(Object),
+    initAbout: func.isRequired,
+  };
+
+  componentDidMount() {
+    this.props.initAbout();
+  }
+
   render() {
-    return (
-      <MuiThemeProvider>
-        <Tabs>
-          <Tab label="CIB" >
-            <Tabs>
-              <Tab label="Custody">
-                <SlideDrawer />
-                <Widget />
-              </Tab>
-              <Tab label="Prime" />
-              <Tab label="Trade" />
-            </Tabs>
-          </Tab>
-          <Tab label="CCB" >
-            <div>
-              Tab 2
-            </div>
-          </Tab>
-          <Tab label="Asset Mang" >
-            <div>
-              Tab 3
-            </div>
-          </Tab>
-        </Tabs>
-      </MuiThemeProvider>
-    );
+    const {
+      chartData,
+      title,
+    } = this.props.config;
+
+    if (chartData) {
+      return (
+        <div>
+          <Chart
+            title={title}
+            config={chartData}
+          />
+        </div>
+      );
+    }
+
+    return (<div />);
   }
 }
+
+export default connect(
+  state => ({
+    config: initializeAbout(state)
+  }), {
+    initAbout
+  }
+)(About);

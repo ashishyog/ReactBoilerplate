@@ -69,15 +69,21 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0",
     "class-name": "^0.1.3",
+    "classnames": "^2.2.5",
     "fbjs": "^0.9.0-alpha.2",
     "highcharts": "^6.1.0",
     "highcharts-react-official": "^1.1.0",
     "material-ui": "^0.20.1",
+    "npm": "^6.1.0",
+    "prop-types": "^15.6.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
+    "react-highcharts": "^16.0.2",
     "react-hot-loader": "^3.1.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^3.0.1"
   }
 }

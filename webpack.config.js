@@ -13,23 +13,23 @@ const NODE_HOST = 'localhost';
 const NODE_PORT = 8111;
 
 module.exports = {
-  
+
   devtool: 'cheap-module-eval-source-map',
-  
+
   context: resolve(__dirname, 'src'),
-  
+
   entry: [
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${NODE_HOST}:${NODE_PORT}`,
     './'
   ],
-  
+
   output: {
     filename: 'app-[hash].js',
     path: resolve(__dirname, 'build'),
     publicPath: '/',
   },
-  
+
   module: {
     rules: [
       {
@@ -49,7 +49,7 @@ module.exports = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml' }
     ]
   },
-  
+
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: {
@@ -58,7 +58,7 @@ module.exports = {
       respond: resolve(__dirname, 'src/scss/utils/respond')
     }
   },
-  
+
   devServer: {
     host: NODE_HOST,
     port: NODE_PORT,
@@ -80,7 +80,7 @@ module.exports = {
       colors: true
     }
   },
-  
+
   plugins: [
     new Dotenv({
       path: './.env',
@@ -96,5 +96,4 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new DashboardPlugin()
   ]
-  
-}
+};
